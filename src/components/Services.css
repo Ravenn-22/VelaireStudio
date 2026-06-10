@@ -1,0 +1,209 @@
+#Services {
+  padding: 80px 40px;
+  background: #f5f0e8;
+}
+
+.services-header {
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.services-eyebrow {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.services-title {
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  font-weight: 400;
+  color: #0a0a0a;
+}
+
+/* ── Bento Grid ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 12px;
+}
+
+/* Cell sizes */
+.bento-cell.normal {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-cell.tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bento-cell.wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* Base cell */
+.bento-cell {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 220px;
+  cursor: default;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.bento-cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Image cells */
+.bento-cell.image {
+  background: #e8e0d8;
+}
+
+.bento-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.bento-cell:hover .bento-img {
+  transform: scale(1.05);
+}
+
+.bento-img-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #d8d0c8, #c0b8b0);
+}
+
+/* Overlay gradient on image cells */
+.bento-cell.image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 55%);
+  z-index: 1;
+}
+
+/* Content */
+.bento-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Color cells — content sits at bottom left */
+.bento-cell.color .bento-content {
+  position: absolute;
+  bottom: 0;
+}
+
+.bento-name {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.bento-desc {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+/* Dark text for light background cells */
+.bento-content.dark-text .bento-name {
+  color: #1a1a1a;
+}
+
+.bento-content.dark-text .bento-desc {
+  color: #555;
+}
+
+/* CTA */
+.services-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+.services-cta-btn {
+  padding: 16px 56px;
+  background: #1a1a1a;
+  color: #fff;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.services-cta-btn:hover {
+  background: #333;
+}
+@media (max-width: 768px) {
+  #Services {
+    padding: 60px 20px;
+  }
+
+  .services-title {
+    font-size: 32px;
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-cell.tall {
+    grid-row: span 1;
+  }
+
+  .bento-cell.wide {
+    grid-column: span 2;
+  }
+
+  .bento-cell {
+    min-height: 180px;
+  }
+
+  .services-cta-btn {
+    padding: 14px 32px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-cell.wide {
+    grid-column: span 1;
+  }
+}
